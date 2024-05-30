@@ -9,7 +9,10 @@ use App\Models\Customer;
 class CustomerController extends Controller
 {
     public function create(){
-       return view('customer');
+        $url=url("/customer/create");
+        $title="Customer Registration";
+        $data=compact('url','title');
+       return view('customer')->with($data);
     }
     public function store(Request $request){
         echo "<pre>";
@@ -48,4 +51,31 @@ class CustomerController extends Controller
         $customer->delete();}
         return redirect('customer');
     }
+    public function edit($id){
+        $customer=Customer::find($id);
+        if(is_null($customer)){
+       
+        return redirect('customer');
+        }else{
+            $url=url("/customer/update")."/". $id;
+            $title="Update Customer";
+            $data=compact('customer','url','title');
+            return view('customer')->with($data);
+        }
+    }
+    public function update(Request $request,$id){
+        $customer=Customer::find($id);
+        if(!is_null($customer)){
+        $customer->customer_name=$request['customer_name'];
+        $customer->customer_email=$request['customer_email'];
+        $customer->gender=$request['gender'];
+        $customer->dob=$request['dob'];
+        $customer->customer_address=$request['customer_address'];
+        $customer->country=$request['country'];
+        $customer->state=$request['state'];
+        $customer->city=$request['city'];
+        $customer->save();
+        
+        return redirect('customer');}
+}
 }

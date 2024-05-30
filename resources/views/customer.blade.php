@@ -32,44 +32,46 @@
     </nav>
     </div>
     <div class="container mt-5">
-        <h2>Customer Registration</h2>
-        <form action="{{ url('/') }}/customer" method="post">
+        <h2>{{$title}}</h2>
+        {{-- <form action="{{ url('/') }}/customer" method="post"> --}}
+            {{-- for dynamic (create,update) --}}
+            <form action="{{ $url}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="customer_name" class="form-label">Customer Name</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" maxlength="60" required>
+                <input type="text" class="form-control" id="customer_name" name="customer_name" maxlength="60" required value="{{$customer->customer_name}}">
             </div>
             <div class="mb-3">
                 <label for="customer_email" class="form-label">Customer Email</label>
-                <input type="email" class="form-control" id="customer_email" name="customer_email" maxlength="100" required>
+                <input type="email" class="form-control" id="customer_email" name="customer_email" maxlength="100" required value="{{$customer->customer_email}}">
             </div>
             <div class="mb-3">
                 <label for="gender" class="form-label">Gender</label>
-                <select class="form-select" id="gender" name="gender" required>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="O">Other</option>
+                <select class="form-select" id="gender" name="gender" required ">
+                    <option value="M" {{$customer->gender=='M'? "checked" :""}}>Male</option>
+                    <option value="F"{{$customer->gender=='F'? "checked ":""}}>Female</option>
+                    <option value="O"{{$customer->gender=='O'? "checked" :""}}>Other</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="dob" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" name="dob">
+                <input type="date" class="form-control" id="dob" name="dob" value="{{$customer->dob}}">
             </div>
             <div class="mb-3">
                 <label for="customer_address" class="form-label">Customer Address</label>
-                <textarea class="form-control" id="customer_address" name="customer_address" required></textarea>
+                <textarea class="form-control" id="customer_address" name="customer_address" required ></textarea>
             </div>
             <div class="mb-3">
                 <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city" name="city">
+                <input type="text" class="form-control" id="city" name="city" value="{{$customer->city}}">
             </div>
             <div class="mb-3">
                 <label for="state" class="form-label">State</label>
-                <input type="text" class="form-control" id="state" name="state">
+                <input type="text" class="form-control" id="state" name="state" value="{{$customer->state}}">
             </div>
             <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
-                <input type="text" class="form-control" id="country" name="country">
+                <input type="text" class="form-control" id="country" name="country" value="{{$customer->state}}">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>

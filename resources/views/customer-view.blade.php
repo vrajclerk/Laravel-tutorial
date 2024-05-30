@@ -50,6 +50,7 @@
                     <th scope="col">password</th>
                     <th scope="col">status</th>
                     <th scope="col">points</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,6 +97,11 @@
                         {{-- method-2 --}}
                         <a href="{{route('customer.delete',['id'=>$customer->customer_id])}}">
                         <button class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('customer.edit',['id'=>$customer->customer_id])}}">
+                        <button class="btn btn-primary">Edit</button>
                         </a>
                     </td>
                 </tr>
