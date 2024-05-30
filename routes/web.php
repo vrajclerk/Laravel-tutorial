@@ -15,8 +15,6 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-// Route::get('/register',[RegistrationController::class,'index']);
-// Route::post('/register',[RegistrationController::class,'register']);
 
 // Route::get('/customer',function(){
 //     $customers = Customer::all();
@@ -25,6 +23,12 @@ use App\Http\Controllers\CustomerController;
 //     // return view('customer',['customer'=>$customer]);
 // });
 
-Route::get('/customer/create',[CustomerController::class,'create']);
+Route::get('/',function(){
+    return view('index');
+});
+
+Route::get('/register',[RegistrationController::class,'index']);
+Route::post('/register',[RegistrationController::class,'register']);
+Route::get('/customer/create',[CustomerController::class,'create'])->name("customer.create");
 Route::post('/customer',[CustomerController::class,'store']);
-Route::get('/customer/view',[CustomerController::class,'view']);
+Route::get('/customer',[CustomerController::class,'view']);

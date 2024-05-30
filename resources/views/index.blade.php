@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Bootstrap Navbar Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Vraj Clerk</a>
@@ -29,25 +30,10 @@
             </div>
         </div>
     </nav>
-    </div>
-    <div class="container">
-        <h1 class="text-center">Registration Form</h1>
-        <form action="{{ url('/') }}/register" method="post">
-            @csrf
-            @php
-            $demo=1;
-            @endphp
-            <div class="container">
-                <x-input type="text" name="name" label="please enter your name" :demo="$demo" />
-                <x-input type="email" name="email" label="please enter your email" />
-                <x-input type="password" name="password" label=" password" />
-                <x-input type="password" name="password_confirmation" label="confirm password" />
 
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS and dependencies (Popper.js and Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

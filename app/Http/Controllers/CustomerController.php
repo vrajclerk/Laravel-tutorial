@@ -28,7 +28,7 @@ class CustomerController extends Controller
         $customer->password=md5($request['password']); //for encoding
         $customer->save();
 
-        return redirect('/customer/view');
+        return redirect('/customer');
 }
     public function view(){
         $customers=Customer::all();

@@ -8,8 +8,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Vraj Clerk</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/register')}}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/customer')}}">Customer</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <h1>Customer View</h1>
+        <a href="{{route('customer.create')}}">
+        <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
+        </a>
         <table class="table">
           
             <thead>
@@ -52,13 +76,20 @@
                     <td>{{$customer->password}}</td>
                     <td>
                         @if($customer->status=="1")
-                         Active
+                        <button class-btn>
+                            <span class="badge badge-success">Active</span>
+                        </button>
                          @else
-                         Inactive
+                         <button class-btn>
+                            <span class="badge badge-danger">Inactive</span>
+                        </button>
                          @endif
                         
                     </td>
                     <td>{{$customer->points}}</td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                
                 @endforeach
