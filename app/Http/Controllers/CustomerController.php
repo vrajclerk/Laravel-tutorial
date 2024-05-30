@@ -40,4 +40,12 @@ class CustomerController extends Controller
         return view('customer-view')->with($data);
 
     }
+    public function delete($id){
+
+        $customer=Customer::find($id);
+        //if data is not null then this function will execute
+        if(!is_null($customer)){
+        $customer->delete();}
+        return redirect('customer');
+    }
 }

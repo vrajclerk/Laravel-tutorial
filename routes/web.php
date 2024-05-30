@@ -32,3 +32,4 @@ Route::post('/register',[RegistrationController::class,'register']);
 Route::get('/customer/create',[CustomerController::class,'create'])->name("customer.create");
 Route::post('/customer',[CustomerController::class,'store']);
 Route::get('/customer',[CustomerController::class,'view']);
+Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');

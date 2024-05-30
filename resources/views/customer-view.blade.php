@@ -88,7 +88,15 @@
                     </td>
                     <td>{{$customer->points}}</td>
                     <td>
+                        {{-- Method 1 --}}
+                        {{-- <a href="{{url('/customer/delete/')}}/{{$customer->customer_id}}">
                         <button class="btn btn-danger">Delete</button>
+                        </a> --}}
+
+                        {{-- method-2 --}}
+                        <a href="{{route('customer.delete',['id'=>$customer->customer_id])}}">
+                        <button class="btn btn-danger">Delete</button>
+                        </a>
                     </td>
                 </tr>
                
