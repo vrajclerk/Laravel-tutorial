@@ -10,5 +10,5 @@ class Customer extends Model
     use HasFactory;
     protected $table="customers";
     protected $primaryKey="customer_id";
-
+  
 }
