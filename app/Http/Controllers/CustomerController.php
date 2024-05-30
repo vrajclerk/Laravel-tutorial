@@ -64,6 +64,9 @@ class CustomerController extends Controller
         }
     }
     public function update(Request $request,$id){
+
+        // p($request->all());
+        // die;
         $customer=Customer::find($id);
         if(!is_null($customer)){
         $customer->customer_name=$request['customer_name'];

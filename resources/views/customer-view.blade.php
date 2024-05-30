@@ -69,7 +69,7 @@
                         @else
                         Other
                         @endif</td>
-                    <td>{{$customer->dob}}</td>
+                    <td>{{get_formatted_date($customer->dob,"d-m-y")}}</td>
                     <td>{{$customer->customer_address}}</td>
                     <td>{{$customer->country}}</td>
                     <td>{{$customer->state}}</td>
