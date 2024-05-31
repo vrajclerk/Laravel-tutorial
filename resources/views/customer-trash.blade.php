@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer View</title>
+    <title>Customer Trash</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -30,12 +30,12 @@
         </div>
     </nav>
     <div class="container">
-        <h1>Customer View</h1>
-        <a href="{{route('customer.create')}}">
+        <h1>Customer Trash</h1>
+        <a href="{{route('customer.trash')}}">
         <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
         </a>
-        <a href="{{url('customer/trash')}}">
-            <button class="btn btn-danger d-inline-block m-2 float-right">Go to trash</button>
+        <a href="{{url('customer')}}">
+            <button class="btn btn-primary d-inline-block m-2 float-right">Customer view</button>
             </a>
         <table class="table">
           
@@ -98,13 +98,13 @@
                         </a> --}}
 
                         {{-- method-2 --}}
-                        <a href="{{route('customer.delete',['id'=>$customer->customer_id])}}">
-                        <button class="btn btn-danger">Trash</button>
+                        <a href="{{route('customer.force-delete',['id'=>$customer->customer_id])}}">
+                        <button class="btn btn-danger">Delete</button>
                         </a>
                     </td>
                     <td>
-                        <a href="{{route('customer.edit',['id'=>$customer->customer_id])}}">
-                        <button class="btn btn-primary">Edit</button>
+                        <a href="{{route('customer.restore',['id'=>$customer->customer_id])}}">
+                        <button class="btn btn-primary">Restore</button>
                         </a>
                     </td>
                 </tr>

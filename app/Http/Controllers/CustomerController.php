@@ -17,9 +17,10 @@ class CustomerController extends Controller
     public function store(Request $request){
         echo "<pre>";
         print_r($request->all());
+        echo "</pre>";
 
         //Insert Query
-        $customer=new customer;
+        $customer=new Customer;
         $customer->customer_name=$request['customer_name'];
         $customer->customer_email=$request['customer_email'];
         $customer->gender=$request['gender'];
@@ -34,12 +35,12 @@ class CustomerController extends Controller
         return redirect('/customer');
 }
     public function view(){
-        $customers=Customer::all();
+        $customer=Customer::all();
         // echo "<pre>"; //to view formate array
         // print_r($customers->toArray());
         // die;
 
-        $data=compact('customers');
+        $data=compact('customer');
         return view('customer-view')->with($data);
 
     }
@@ -50,6 +51,24 @@ class CustomerController extends Controller
         if(!is_null($customer)){
         $customer->delete();}
         return redirect('customer');
+    }
+    public function restore($id){
+
+        $customer=Customer::withTrashed()->find($id);
+        //if data is not null then this function will execute
+        if(!is_null($customer)){
+        $customer->restore();
+    }
+        return redirect('customer');
+    }
+    public function forceDelete($id){
+
+        $customer=Customer::withTrashed()->find($id);
+        //if data is not null then this function will execute
+        if(!is_null($customer)){
+        $customer->forceDelete();
+    }
+        return redirect()->back();
     }
     public function edit($id){
         $customer=Customer::find($id);
@@ -62,13 +81,13 @@ class CustomerController extends Controller
             $data=compact('customer','url','title');
             return view('customer')->with($data);
         }
-    }
+    } 
     public function update(Request $request,$id){
 
         // p($request->all());
         // die;
         $customer=Customer::find($id);
-        if(!is_null($customer)){
+        
         $customer->customer_name=$request['customer_name'];
         $customer->customer_email=$request['customer_email'];
         $customer->gender=$request['gender'];
@@ -79,6 +98,12 @@ class CustomerController extends Controller
         $customer->city=$request['city'];
         $customer->save();
         
-        return redirect('customer');}
+        return redirect('customer');
+    }
+    public function trash(){
+        $customer=Customer::onlyTrashed()->get();
+        $data=compact('customer');
+        return view('customer-trash')->with($data);
+    }
 }
-}
+
