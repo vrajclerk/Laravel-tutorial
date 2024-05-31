@@ -9,18 +9,19 @@ use App\Models\Customer;
 class CustomerController extends Controller
 {
     public function create(){
-        $url=url("/customer/create");
+        $customer = new Customer();
+        $url=url("/customer");
         $title="Customer Registration";
-        $data=compact('url','title');
+        $data=compact('url','title','customer');
        return view('customer')->with($data);
     }
     public function store(Request $request){
         echo "<pre>";
-        print_r($request->all());
+        print_r($request->post());
         echo "</pre>";
 
         //Insert Query
-        $customer=new Customer;
+        $customer=new Customer();
         $customer->customer_name=$request['customer_name'];
         $customer->customer_email=$request['customer_email'];
         $customer->gender=$request['gender'];
@@ -30,6 +31,9 @@ class CustomerController extends Controller
         $customer->state=$request['state'];
         $customer->city=$request['city'];
         $customer->password=md5($request['password']); //for encoding
+        $customer->status=$request['status'];
+        $customer->points=$request['points'];
+       
         $customer->save();
 
         return redirect('/customer');
