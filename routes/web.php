@@ -5,6 +5,8 @@ use App\Http\Controllers\RegistrationController;
 use App\Models\Customer;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
+use App\Models\Post; // Add this line to import the 'Post' model
+
 /*
 |-------------------------------------------------------------------------
 |--------------------------------------------
@@ -58,3 +60,23 @@ Route::get('destroy-session',function(Request $request){
     $request->session()->forget('customer_id');
     return redirect('get-all-session');
 });
+
+Route::get('/read',function(){  
+$posts=Post::all();  
+foreach($posts as $post)  
+{  
+  echo $post->body;  
+//   echo ?<br>?;  
+}  
+});
+Route::get('/find',function(){  
+    $posts=Post::where('id',1)->first();  
+    return $posts;  
+    });   
+    
+    Route::get('/insert',function(){  
+        $post=new Post;  
+        $post->title='Nishka';  
+        $post->body='QA Analyst';  
+        $post->save();  
+        });  
