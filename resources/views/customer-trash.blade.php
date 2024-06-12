@@ -36,9 +36,9 @@
     </nav>
     <div class="container">
         <h1>Customer Trash</h1>
-        <a href="{{route('customer.trash')}}">
-        <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
-        </a>
+        {{-- <a href="{{route('customer.trash')}}"> --}}
+        {{-- <button class="btn btn-primary d-inline-block m-2 float-right">Add</button> --}}
+        {{-- </a> --}}
         <a href="{{url('customer')}}">
             <button class="btn btn-primary d-inline-block m-2 float-right">Customer view</button>
             </a>

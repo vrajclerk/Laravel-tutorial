@@ -17,7 +17,7 @@ class Customer extends Model
     public function setCustomerNameAttribute($value){
         $this->attributes['customer_name'] = ucwords($value);
     }
-    public function getD0bAttribute($value){
-        $this->attributes['dob'] = strtotime($value);
-    }
+         public function getD0bAttribute($value){
+            $this->attributes['dob'] = strtotime($value);
+        }
 }

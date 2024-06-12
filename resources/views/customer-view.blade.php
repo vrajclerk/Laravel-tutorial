@@ -39,7 +39,7 @@
         <h1>Customer View</h1>
         <a href="{{route('customer.create')}}">
         <button class="btn btn-primary d-inline-block m-2 float-right">Add</button>
-        </a>
+        </a>    
         <a href="{{url('customer/trash')}}">
             <button class="btn btn-danger d-inline-block m-2 float-right">Go to trash</button>
             </a>
