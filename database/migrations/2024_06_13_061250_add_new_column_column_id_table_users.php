@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class AddNewColumnColumnIdTableUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            
-            $table->timestamps();
-        });
+        Schema::table('users', function (Blueprint $table) {  
+            $table->integer('country_id')->unsigned;  
+        });  
     }
 
     /**
@@ -27,6 +25,9 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('users', function (Blueprint $table) {  
+            $table->dropColumn('country_id');  
+        });  
+    }  
     }
-}
+

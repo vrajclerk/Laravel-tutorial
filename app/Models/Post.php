@@ -10,4 +10,19 @@ class Post extends Model
     // use HasFactory;
     protected $table='posts';  
     protected $primaryKey='id';
+    protected $fillable=  
+[  
+'title',  
+'body'  
+];  
+protected $dates=['deleted_at'];  
+
+
+    public function user()  
+{  
+  return $this->belongsTo('App\Models\User');  
+}  
+public function photos()  
+{  
+  return $this->morphMany('App\Models\Photo','imageable');}  
 }

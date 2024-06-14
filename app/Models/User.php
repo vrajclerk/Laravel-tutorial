@@ -22,7 +22,26 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    public function post()  
+    {  
+    return $this->hasOne('App\Models\Post');  
+    }  
+    //one-to-many
+    public function posts()  
+    {  
+    return $this->hasMany('App\Models\Post','user_id');  
+    }  
+    //many-to-many
+    public function role()  
+    {  
+   //return $this->belongsToMany('App\Models\Role','roles_user'); 
+   return $this->belongsToMany('App\Models\Role','roles_user','user_id','role_id'); 
+    }
+    //one-to-many(polimorphic)
+    public function photos()  
+    {  
+  return $this->morphMany('App\Models\Photo','imageable');  
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

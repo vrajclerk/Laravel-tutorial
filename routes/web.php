@@ -6,6 +6,9 @@ use App\Models\Customer;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use App\Models\Post; // Add this line to import the 'Post' model
+use App\Models\User;
+use App\Models\Role;
+use App\Models\country;
 
 /*
 |-------------------------------------------------------------------------
@@ -78,5 +81,60 @@ Route::get('/find',function(){
         $post=new Post;  
         $post->title='Nishka';  
         $post->body='QA Analyst';  
+        $post->user_id='1';
         $post->save();  
         });  
+
+        Route::get('/user',function()  
+        {  
+             return User::find(1)->post;  
+        }  
+        );  
+        Route::get('/post/user',function()  
+{  
+ return Post::find(3)->user->name;  
+});
+
+//One-to-many
+Route::get('/posts',function(){  
+    $user=User::find(1);  
+    foreach($user->posts as $post){  
+    echo $post->title."<br>";  
+    }  
+    }); 
+    
+    //Many-to-Many
+    Route::get('/roles/{id}',function($id){  
+        $user=User::find($id);  
+        foreach($user->role as $role)  
+        {  
+           return $role->name;  
+        }  
+        });  
+
+        Route::get('/user/country',function()  
+        {  
+         $country=country::find(1);  
+            foreach($country->posts as $post)  
+            {  
+                return $post->title;  
+                }  
+            }); 
+            //polumorphic
+            Route::get('/user/photo',function(){  
+                $user=User::find(1);  
+                foreach($user->photos as $photo)  
+                {  
+                   return $photo;  
+                }  
+                }); 
+
+                // Route defined for the posts.  
+Route::get('/post/photo',function(){  
+    $post=Post::find(1);  
+    foreach($post->photos as $photo)  
+    {  
+       return $photo;  
+    }  
+      
+    });  
