@@ -9,6 +9,9 @@ use App\Models\Post; // Add this line to import the 'Post' model
 use App\Models\User;
 use App\Models\Role;
 use App\Models\country;
+use App\Models\Tag;
+  
+use App\Models\Audio;  
 
 /*
 |-------------------------------------------------------------------------
@@ -138,3 +141,40 @@ Route::get('/post/photo',function(){
     }  
       
     });  
+
+
+
+// Route for getting the tags from the Post model.  
+Route::get('/post/tags',function()  
+{  
+  $post=Post::find(3);   
+  foreach($post->tags as $tag)  
+  {  
+    return $tag->name;  
+  }});  
+//Route for getting the tags from the Audio model.  
+Route::get('/audio/tags',function()  
+{  
+  $audio=Audio::find(1);   
+  foreach($audio->tags as $tag)  
+  {  
+    return $tag->name;  
+  }});  
+
+
+  // Route for getting all the posts of a tag.  
+Route::get('/tag/post/{id}',function($id){  
+  $tag=Tag::find($id);  
+  foreach($tag->posts as $post)  
+  {  
+     return $post->title;  
+  }  
+  });  
+  // Route for getting all the audios of a tag.  
+  Route::get('/tag/audio/{id}',function($id){  
+  $tag=Tag::find($id);  
+  foreach($tag->audios as $audio)  
+  {  
+     return $audio->name;  
+  }  
+  });  

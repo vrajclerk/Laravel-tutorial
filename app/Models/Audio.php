@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Audio extends Model
 {
     use HasFactory;
+    public function tags()  
+    {  
+      return $this->morphToMany('App\Models\Tag','taggable');  
+    }  
 }
